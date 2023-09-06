@@ -1,3 +1,4 @@
+from db_create import *
 from tkinter import *
 from tkinter import messagebox
 import cv2 as cv
@@ -7,7 +8,7 @@ class fream():
 
     def __init__(self) -> None:
         self.root = Tk()
-
+        self.obj = Admnin_data()
         #main  screen
         self.root.geometry("800x500")
         self.root.title("ANPR/Login")
@@ -19,22 +20,22 @@ class fream():
         self.main_img.pack()
 
         #Main  fream
-        Datafreame2=Frame(self.root,background='#4caedb')
-        Datafreame2.place(x=490,y=30,width=300,height=350)
+        self.Datafreame2=Frame(self.root,background='#4caedb')
+        self.Datafreame2.place(x=490,y=30,width=300,height=350)
 
 
         #title
-        input_label=Label(Datafreame2,text='Login/Registr',fg='white',bg='#013764',font=("times new roman",13,'bold'),relief=RAISED,padx=10)
+        input_label=Label(self.Datafreame2,text='Login/Registr',fg='white',bg='#013764',font=("times new roman",13,'bold'),relief=RAISED,padx=10)
         input_label.grid(padx=0,pady=0)
 
-        temp_lable=Label(Datafreame2,bg='#4caedb')
+        temp_lable=Label(self.Datafreame2,bg='#4caedb')
         temp_lable.grid(row=1,column=0)
 
 
-        Login=Button(Datafreame2,text='Login',width=20,command=self.Login_user)
+        Login=Button(self.Datafreame2,text='Login',width=20,command=self.Login_user)
         Login.grid(row=2,column=1,pady=20)
 
-        Login=Button(Datafreame2,text='Registration',width=20,command=self.New_user)
+        Login=Button(self.Datafreame2,text='Registration',width=20,command=self.New_user)
         Login.grid(row=4,column=1,pady=20)
 
         # lower 
@@ -46,12 +47,12 @@ class fream():
         Exit.place(x=760,y=0)
         self.show_img()
 
-    def show_img(self):
-        img=cv.imread('main3.jpg')
-        photo = cv.resize(img, (800,500))
-        # new_img=img[10:410,400:700]
-        new_img = img
 
+    def show_img(self):
+        img=cv.imread("main3.jpg")
+        photo = cv.resize(img, (800,500))
+        new_img=photo
+            
         opencv_image = cv.cvtColor(new_img, cv.COLOR_BGR2RGBA)
         captured_image = Image.fromarray(opencv_image)
         photo_image = ImageTk.PhotoImage(image=captured_image)
@@ -59,10 +60,11 @@ class fream():
         self.main_img.configure(image=photo_image)
 
     def Login_user(self):
-        pass
+        self.obj.Login(self.root)
 
     def New_user(self):
-        pass
+        self.obj.Register(self.root)
+        
         
 obj = fream()
 mainloop()
