@@ -1,0 +1,78 @@
+Label name          python file name            object name   class name of python file
+
+Add new Vehicle : _new_vhi.py                   add_vhic
+Edit Veh_info   : _edit_vhi.py                  edit_info
+Find Veh_Detels : _find_vhi.py                  find_info               Find
+Vehicle Records : _vhi_record.py                Records
+Delete Vehical  : Delete_vhi_db.py              vhi_dele
+Other Vehicle   : other functions of vhicale    other
+
+
+        #data_fream 3 add new vhicL GUI
+        self.add_vhic = new_memb()
+        self.find_info = Detels()
+        self.other= Other()
+        self.e_obj edit_info= Edit_vhi()
+        #self.find_info = Find()
+        #self.Records = data()
+
+souress
+
+https://nrsyed.com/2018/07/05/multithreading-with-opencv-python-to-improve-video-processing-performance/
+
+https://www.toptal.com/python/beginners-guide-to-concurrency-and-parallelism-in-python
+
+
+
+
+
+
+def __init__(self):
+        self.PSW = None
+        self.root = None
+
+    def get_password(self):
+        path = "Text\password.txt"
+        self.isExist = os.path.exists(path)
+
+        if self.isExist == False:
+            self.root = Tk()
+            self.root.geometry("400x150")
+            self.root.title("ANPR/DataBase conection")
+            self.root.wm_iconbitmap("Images/download.ico")
+            
+
+            moto = Label(self.root,text="This information only tekean one time for to conect Database",font=('arial' , 10 , 'bold'))
+            moto.place(x = 2, y = 5)
+
+            L=Label(self.root , text= "Enter password : ",font=('arial' , 8 , 'bold'))
+            L.place(x = 10, y = 50)
+
+            self.password = Entry(self.root , font=('arial' , 11 , 'bold'))
+            self.password.place(x = 130 , y = 50)
+
+            B_1=Button(self.root,text = "Process",command=self.Take_data,font=('arial' , 9 , 'bold'))
+            B_1.place(x=210,y=90)
+
+            B_2 = Button(self.root,text="Exit",font=('arial' , 9 , 'bold'),command=self.Exit)
+            B_2.place(x=363,y = 120)
+
+        if self.isExist == True:
+            return 
+
+    def Take_data(self):
+        self.PSW = self.password.get()
+        file = open("Text/password.txt",'w+')
+        file.write(self.PSW)
+        file.seek(0)
+        PASS = file.read()
+        print(PASS)
+        file.close()
+        self.create_data_base()
+        self.Exit()
+        
+                
+    
+    def Exit(self):
+        self.root.destroy()
+
