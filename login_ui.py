@@ -415,6 +415,6 @@ def new_windows():
 
 
 
-show_img(main_img,'main3.jpg',800,500)
-#show_img(label2,'main3.jpg',800,500,1)
-root.mainloop()
+# show_img(main_img,'main3.jpg',800,500)
+# #show_img(label2,'main3.jpg',800,500,1)
+# root.mainloop()
